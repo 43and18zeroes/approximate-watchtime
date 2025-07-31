@@ -1,0 +1,22 @@
+<mat-toolbar class="mat-elevation-z3">
+  <button mat-icon-button (click)="collapsed.set(!collapsed())">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    (click)="darkMode.set(!darkMode())"
+    class="mr-8"
+    aria-label="Toggle dark mode"
+  >
+    <mat-icon>{{ darkMode() ? "light_mode" : "bedtime" }}</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+    <!-- <app-custom-sidenav [collapsed]="collapsed()"></app-custom-sidenav> -->
+    <button matButton="elevated">Eintrag</button>
+  </mat-sidenav>
+  <!-- <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()"> -->
+  <!-- <router-outlet />
+      </mat-sidenav-content> -->
+</mat-sidenav-container>
