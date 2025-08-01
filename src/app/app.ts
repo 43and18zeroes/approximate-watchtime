@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CustomSidenav } from "./components/custom-sidenav/custom-sidenav";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatSidenavModule,
     MatButtonModule,
     MatSlideToggleModule,
-  ],
+    CustomSidenav
+],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
