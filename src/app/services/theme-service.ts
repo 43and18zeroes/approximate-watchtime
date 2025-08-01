@@ -38,6 +38,9 @@ export class ThemeService {
     const dark = this.darkMode();
     document.body.classList.toggle('darkMode', dark);
     document.body.classList.toggle('lightMode', !dark);
-    localStorage.setItem('darkMode', dark.toString());
   });
+
+  saveUserPreference(): void {
+    localStorage.setItem('darkMode', this.darkMode().toString());
+  }
 }
