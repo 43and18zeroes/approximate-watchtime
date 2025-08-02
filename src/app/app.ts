@@ -32,9 +32,5 @@ export class App {
     this.themeService.initTheme();
   }
 
-  toggleTheme() {
-    const current = this.themeService.darkMode();
-    this.themeService.darkMode.set(!current);
-    this.themeService.saveUserPreference();
-  }
+
 }

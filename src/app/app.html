@@ -4,9 +4,9 @@
   </button>
   <button
     mat-icon-button
-    (click)="toggleTheme()"
+    (click)="themeService.toggleTheme()"
     class="mr-8"
-    aria-label="Toggle dark mode"
+    aria-label="Toggle toggle theme"
   >
     <mat-icon>{{ themeService.darkMode() ? "light_mode" : "bedtime" }}</mat-icon>
   </button>

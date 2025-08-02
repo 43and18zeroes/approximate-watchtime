@@ -43,4 +43,10 @@ export class ThemeService {
   saveUserPreference(): void {
     localStorage.setItem('darkMode', this.darkMode().toString());
   }
+
+  toggleTheme() {
+    const current = this.darkMode();
+    this.darkMode.set(!current);
+    this.saveUserPreference();
+  }
 }
