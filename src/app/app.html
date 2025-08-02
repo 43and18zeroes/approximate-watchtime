@@ -8,7 +8,9 @@
     class="mr-8"
     aria-label="Toggle theme"
   >
-    <mat-icon>{{ themeService.darkMode() ? "light_mode" : "bedtime" }}</mat-icon>
+    <mat-icon>{{
+      themeService.darkMode() ? "light_mode" : "bedtime"
+    }}</mat-icon>
   </button>
 </mat-toolbar>
 <mat-sidenav-container>
@@ -16,7 +18,7 @@
     <app-custom-sidenav [collapsed]="collapsed()"></app-custom-sidenav>
     <button matButton="elevated">Eintrag</button>
   </mat-sidenav>
-  <!-- <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()"> -->
-  <!-- <router-outlet />
-      </mat-sidenav-content> -->
+  <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+    <router-outlet />
+  </mat-sidenav-content>
 </mat-sidenav-container>
