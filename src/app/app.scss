@@ -15,5 +15,6 @@ mat-sidenav-container {
   mat-sidenav {
     @include custom-mixins.mat-theme-transition();
     padding: 16px;
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 }
