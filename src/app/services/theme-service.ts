@@ -34,7 +34,7 @@ export class ThemeService {
       });
   }
 
-  toggleDarkMode = effect(() => {
+  applyThemeEffect = effect(() => {
     const dark = this.darkMode();
     document.body.classList.toggle('darkMode', dark);
     document.body.classList.toggle('lightMode', !dark);
