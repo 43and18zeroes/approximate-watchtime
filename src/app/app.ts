@@ -28,7 +28,7 @@ export class App {
   themeService = inject(ThemeService);
   collapsed = signal(false);
 
-  sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
+  sidenavWidth = computed(() => (this.collapsed() ? '81px' : '250px'));
 
   constructor() {
     this.themeService.initTheme();

@@ -10,7 +10,7 @@
   >
     <mat-icon
       [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
-      matListItemIcon
+      matListItemIcon [style.marginLeft]="iconMargin()"
       >{{ item.icon }}</mat-icon
     >
     <span matListItemTitle *ngIf="!sideNavCollapsed()">{{ item.label }}</span>
