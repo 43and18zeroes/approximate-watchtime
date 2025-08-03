@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -11,7 +12,7 @@ export type MenuItem = {
 
 @Component({
   selector: 'app-custom-sidenav',
-  imports: [MatListModule, MatIconModule, RouterModule],
+  imports: [CommonModule, MatListModule, MatIconModule, RouterModule],
   templateUrl: './custom-sidenav.html',
   styleUrl: './custom-sidenav.scss',
 })
@@ -24,7 +25,7 @@ export class CustomSidenav {
 
   menuItems = signal<MenuItem[]>([
     {
-      icon: 'forms_add_on',
+      icon: 'edit_square',
       label: 'Data Entry',
       route: '/data-entry',
     },
