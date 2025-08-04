@@ -26,7 +26,7 @@ import { RouterOutlet } from '@angular/router';
 export class App {
   protected readonly title = signal('crud');
   themeService = inject(ThemeService);
-  collapsed = signal(false);
+  collapsed = signal(true);
 
   sidenavWidth = computed(() => (this.collapsed() ? '81px' : '250px'));
 
@@ -34,5 +34,7 @@ export class App {
     this.themeService.initTheme();
   }
 
-
+  collapseSidenav() {
+    this.collapsed.set(true);
+  }
 }
