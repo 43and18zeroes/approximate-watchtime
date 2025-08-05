@@ -29,7 +29,6 @@ export class App {
   themeService = inject(ThemeService);
   collapsed = signal(true);
   isDesktop = signal(true);
-  sidenavMode = signal('side');
 
   sidenavWidth = computed(() => (this.collapsed() ? '81px' : '250px'));
   contentMarginLeft = computed(() => {
@@ -45,7 +44,6 @@ export class App {
       .observe([Breakpoints.Handset])
       .subscribe((result) => {
         this.isDesktop.set(!result.matches);
-        this.sidenavMode.set(this.isDesktop() ? 'side' : 'over');
       });
   }
 
