@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CustomSidenav } from './components/custom-sidenav/custom-sidenav';
 import { ThemeService } from './services/theme-service';
 import { RouterOutlet } from '@angular/router';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -27,11 +28,25 @@ export class App {
   protected readonly title = signal('crud');
   themeService = inject(ThemeService);
   collapsed = signal(true);
+  isDesktop = signal(true);
+  sidenavMode = signal('side');
 
   sidenavWidth = computed(() => (this.collapsed() ? '81px' : '250px'));
+  contentMarginLeft = computed(() => {
+    if (!this.isDesktop()) {
+      return '81px';
+    }
+    return this.collapsed() ? '81px' : '250px';
+  });
 
-  constructor() {
+  constructor(private breakpointObserver: BreakpointObserver) {
     this.themeService.initTheme();
+    this.breakpointObserver
+      .observe([Breakpoints.Handset])
+      .subscribe((result) => {
+        this.isDesktop.set(!result.matches);
+        this.sidenavMode.set(this.isDesktop() ? 'side' : 'over');
+      });
   }
 
   collapseSidenav() {
