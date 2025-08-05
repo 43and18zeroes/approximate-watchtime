@@ -38,7 +38,9 @@ export class App {
     return this.collapsed() ? '81px' : '250px';
   });
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
+  ngOnInit() {
     this.themeService.initTheme();
     this.breakpointObserver
       .observe([Breakpoints.Handset])
