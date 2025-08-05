@@ -30,14 +30,6 @@ export class App {
   collapsed = signal(true);
   isDesktop = signal(true);
 
-  sidenavWidth = computed(() => (this.collapsed() ? '81px' : '250px'));
-  contentMarginLeft = computed(() => {
-    if (!this.isDesktop()) {
-      return '81px';
-    }
-    return this.collapsed() ? '81px' : '250px';
-  });
-
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit() {
@@ -48,6 +40,14 @@ export class App {
         this.isDesktop.set(!result.matches);
       });
   }
+
+  sidenavWidth = computed(() => (this.collapsed() ? '81px' : '250px'));
+  contentMarginLeft = computed(() => {
+    if (!this.isDesktop()) {
+      return '81px';
+    }
+    return this.collapsed() ? '81px' : '250px';
+  });
 
   collapseSidenav() {
     this.collapsed.set(true);
