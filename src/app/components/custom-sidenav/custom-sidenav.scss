@@ -1,4 +1,4 @@
-.menu-item {
+a {
   margin-bottom: 12px;
 
   mat-icon {
@@ -8,6 +8,6 @@
   }
 }
 
-.menu-item:last-child {
+a:last-child {
   margin-bottom: 0;
 }

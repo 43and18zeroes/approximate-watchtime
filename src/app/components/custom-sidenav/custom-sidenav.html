@@ -1,7 +1,6 @@
 <mat-nav-list>
   <a
     mat-list-item
-    class="menu-item"
     *ngFor="let item of menuItems()"
     [routerLink]="item.route"
     routerLinkActive="selected-menu-item"
