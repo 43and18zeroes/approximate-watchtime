@@ -31,10 +31,5 @@ export class CustomSidenav {
       label: 'Data Entry',
       route: '/data-entry',
     },
-    {
-      icon: 'edit_square',
-      label: 'Data Entry',
-      route: '/data-entry',
-    },
   ]);
 }
