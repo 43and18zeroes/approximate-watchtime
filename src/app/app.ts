@@ -8,6 +8,7 @@ import { CustomSidenav } from './components/custom-sidenav/custom-sidenav';
 import { ThemeService } from './services/theme-service';
 import { RouterOutlet } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { DeviceService } from './services/device-service';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,7 @@ export class App {
   collapsed = signal(true);
   isDesktop = signal(true);
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private deviceService: DeviceService) {}
 
   ngOnInit() {
     this.themeService.initTheme();
