@@ -9,6 +9,7 @@ import { ThemeService } from './services/theme-service';
 import { RouterOutlet } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DeviceService } from './services/device-service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -30,12 +31,16 @@ export class App {
   themeService = inject(ThemeService);
   collapsed = signal(true);
   isDesktop = signal(true);
+  private breakpointSub?: Subscription;
 
-  constructor(private breakpointObserver: BreakpointObserver, private deviceService: DeviceService) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private deviceService: DeviceService
+  ) {}
 
   ngOnInit() {
     this.themeService.initTheme();
-    this.breakpointObserver
+    this.breakpointSub = this.breakpointObserver
       .observe([Breakpoints.Handset])
       .subscribe((result) => {
         this.isDesktop.set(!result.matches);
@@ -52,5 +57,9 @@ export class App {
 
   collapseSidenav() {
     this.collapsed.set(true);
+  }
+
+  ngOnDestroy() {
+    this.breakpointSub?.unsubscribe();
   }
 }
