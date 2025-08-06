@@ -35,21 +35,12 @@ export class DeviceService {
 
   private applyDeviceClassToFooter(): void {
     const sidenavContainer = document.querySelector('mat-sidenav-container');
-    const protectedFooter = document.querySelector('app-protected-footer');
     if (sidenavContainer) {
       if (this.isAndroid) {
         this.renderer.addClass(sidenavContainer, 'android__height');
       }
       if (this.isiPhone) {
-        this.renderer.addClass(sidenavContainer, 'iphone__footer');
-      }
-    }
-    if (protectedFooter) {
-      if (this.isAndroid) {
-        this.renderer.addClass(protectedFooter, 'android__footer');
-      }
-      if (this.isiPhone) {
-        this.renderer.addClass(protectedFooter, 'iphone__footer');
+        this.renderer.addClass(sidenavContainer, 'iphone__height');
       }
     }
   }
