@@ -26,14 +26,14 @@ export class DeviceService {
       this.router.events.pipe(
         filter(event => event instanceof NavigationEnd)
       ).subscribe(() => {
-        this.applyDeviceClassToFooter();
+        this.applyDeviceClassToSidenavContainer();
       });
 
-      this.applyDeviceClassToFooter();
+      this.applyDeviceClassToSidenavContainer();
     }
   }
 
-  private applyDeviceClassToFooter(): void {
+  private applyDeviceClassToSidenavContainer(): void {
     const sidenavContainer = document.querySelector('mat-sidenav-container');
     if (sidenavContainer) {
       if (this.isAndroid) {
