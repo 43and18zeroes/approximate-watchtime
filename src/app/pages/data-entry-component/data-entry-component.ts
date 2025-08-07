@@ -25,6 +25,10 @@ export class DataEntryComponent {
   tableRows: { displayMinute: string; value: string }[] = [];
 
   submit() {
+    if (this.seconds < 0 || this.seconds > 59) {
+      alert('Seconds must be between 0 and 59.');
+      return;
+    }
     this.submitted = true;
     this.createTableRows();
   }
