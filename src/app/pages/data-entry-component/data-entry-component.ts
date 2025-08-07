@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-data-entry-component',
@@ -13,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatTooltipModule,
   ],
   templateUrl: './data-entry-component.html',
   styleUrl: './data-entry-component.scss',
@@ -21,12 +23,21 @@ export class DataEntryComponent {
   minutes!: number;
   seconds!: number;
   submitted: boolean = false;
+  secondsTooltip: string = '';
+  showSecondsTooltip: boolean = false;
 
   tableRows: { displayMinute: string; value: string }[] = [];
 
   submit() {
     if (this.seconds < 0 || this.seconds > 59) {
-      alert('Seconds must be between 0 and 59.');
+      this.secondsTooltip = 'Seconds must be between 0 and 59.';
+      this.showSecondsTooltip = true;
+
+      // Tooltip nur kurz anzeigen, dann wieder deaktivieren
+      setTimeout(() => {
+        this.showSecondsTooltip = false;
+      }, 3000);
+
       return;
     }
     this.submitted = true;

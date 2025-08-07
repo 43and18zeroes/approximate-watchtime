@@ -22,7 +22,12 @@
         min="0"
         max="59"
         [(ngModel)]="seconds"
+        #secondsField="ngModel"
       />
+
+      @if (secondsField.invalid && secondsField.touched) {
+      <mat-error>Please enter a value between 0 and 59.</mat-error>
+      }
     </mat-form-field>
   </div>
   <button matButton="tonal" type="submit">Submit</button>
