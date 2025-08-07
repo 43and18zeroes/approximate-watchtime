@@ -7,16 +7,46 @@ import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-data-entry-component',
-  imports: [CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './data-entry-component.html',
   styleUrl: './data-entry-component.scss',
 })
 export class DataEntryComponent {
-  minutes: string = '';
-  seconds: string = '';
+  minutes!: number;
+  seconds!: number;
   submitted: boolean = false;
+
+  tableRows: { displayMinute: string; value: string }[] = [];
 
   submit() {
     this.submitted = true;
+    this.createTableRows();
+  }
+
+  createTableRows() {
+    this.tableRows = [];
+
+    // Umrechnung der Gesamtlänge in Sekunden
+    const totalSeconds = this.minutes * 60 + this.seconds;
+
+    for (let i = 1; i <= 10; i++) {
+      // Berechne Zeitmarke für die aktuelle Zeile
+      const currentSeconds = i * 120 + this.seconds; // alle 2 Minuten, startend von den eingegebenen Sekunden
+      if (currentSeconds > totalSeconds) break;
+
+      const minute = Math.floor(currentSeconds / 60);
+      const second = currentSeconds % 60;
+
+      this.tableRows.push({
+        displayMinute: `Minute ${minute}:${second.toString().padStart(2, '0')}`,
+        value: '',
+      });
+    }
   }
 }

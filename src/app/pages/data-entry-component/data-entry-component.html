@@ -27,7 +27,19 @@
 </form>
 
 @if (submitted) {
-<h3>
-  Length media product: {{ minutes }}:{{ seconds }} Minutes
-</h3>
+<h3>Length media product: {{ minutes }}:{{ seconds }} Minutes</h3>
+<table mat-table>
+  <tr>
+    <th>Time</th>
+    <th>Input</th>
+  </tr>
+  @for (row of tableRows; track row; let i = $index) {
+  <tr>
+    <td>{{ row.displayMinute }}</td>
+    <td>
+      <input matInput [(ngModel)]="tableRows[i].value" name="rowInput{{ i }}" />
+    </td>
+  </tr>
+  }
+</table>
 }
