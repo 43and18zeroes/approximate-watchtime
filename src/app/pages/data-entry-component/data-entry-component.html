@@ -1,4 +1,5 @@
-<h2>Please enter the length of your media product</h2>
+<h1>Calculate Your Retention Time</h1>
+<h2>Please enter the duration of your content</h2>
 
 <form (ngSubmit)="submit()" #entryForm="ngForm">
   <div class="entry-inputs">
@@ -8,7 +9,6 @@
         matInput
         type="number"
         name="minutes"
-        required
         [(ngModel)]="minutes"
       />
     </mat-form-field>
@@ -30,7 +30,9 @@
       }
     </mat-form-field>
   </div>
-  <button matButton="tonal" type="submit">Submit</button>
+  <button matButton="tonal" type="submit" [disabled]="!entryForm.valid">
+    Submit
+  </button>
 </form>
 
 @if (submitted) {

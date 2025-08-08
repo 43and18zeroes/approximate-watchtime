@@ -27,7 +27,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('crud');
+  protected readonly title = signal('Calculate Your Retention Time');
   themeService = inject(ThemeService);
   collapsed = signal(true);
   isDesktop = signal(true);
