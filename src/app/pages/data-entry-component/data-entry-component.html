@@ -33,8 +33,8 @@
 @if (submitted) {
 <table mat-table>
   <tr>
-    <th>Time</th>
-    <th>Input</th>
+    <th>Time in Minutes</th>
+    <th>Please enter the percentage as a number</th>
   </tr>
   @for (timestamp of this.dataEntryService.timestamps; track timestamp; let i = $index) {
   <tr>
