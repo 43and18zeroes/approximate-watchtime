@@ -37,16 +37,17 @@
     <th>Time</th>
     <th>Input</th>
   </tr>
-  @for (row of tableRows; track row; let i = $index) {
+  @for (timestamp of this.dataEntryService.timestamps; track timestamp; let i = $index) {
   <tr>
-    <td>{{ row.displayMinute }}</td>
+    <td>{{ this.dataEntryService.formatTimestamp(timestamp) }}</td>
     <td>
       <input matInput [(ngModel)]="tableRows[i].value" name="rowInput{{ i }}" />
     </td>
   </tr>
   }
 </table>
-} @if (submitted) {
+}
+<!-- @if (submitted) {
 <div class="mt-6">
   <h3 class="text-xl font-semibold mb-2">Generierte Zeitmarken:</h3>
   <ul class="divide-y divide-gray-200">
@@ -55,4 +56,4 @@
     </li>
   </ul>
 </div>
-}
+} -->
