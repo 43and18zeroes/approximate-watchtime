@@ -31,7 +31,6 @@
 </form>
 
 @if (submitted) {
-<!-- <h3>Length of media product: {{ minutes }}:{{ seconds }} Minutes</h3> -->
 <table mat-table>
   <tr>
     <th>Time</th>
@@ -41,19 +40,9 @@
   <tr>
     <td>{{ this.dataEntryService.formatTimestamp(timestamp) }}</td>
     <td>
-      <input matInput [(ngModel)]="tableRows[i].value" name="rowInput{{ i }}" />
+      <input matInput name="rowInput{{ i }}" />
     </td>
   </tr>
   }
 </table>
 }
-<!-- @if (submitted) {
-<div class="mt-6">
-  <h3 class="text-xl font-semibold mb-2">Generierte Zeitmarken:</h3>
-  <ul class="divide-y divide-gray-200">
-    <li *ngFor="let timestamp of this.dataEntryService.timestamps" class="py-2">
-      {{ timestamp }} Sekunden (entspricht: {{ this.dataEntryService.formatTimestamp(timestamp) }})
-    </li>
-  </ul>
-</div>
-} -->

@@ -6,22 +6,21 @@ import { Injectable } from '@angular/core';
 export class DataEntryService {
   public timestamps: number[] = [];
 
-  generateTimestampRows(seconds: number) {
+  generateTimestampRows(totalSeconds: number) {
+    // Leert das Array, um vorherige Ergebnisse zu entfernen.
     this.timestamps = [];
-    const interval = 120;
-    const maxTimestamps = 10;
-    const offset = 4;
 
-    for (let i = 0; i < maxTimestamps; i++) {
-      const currentTimestamp = i * interval + offset;
+    // Feste Intervalldauer und Offset.
+    const interval = 120; // 120 Sekunden
+    const offset = 4; // Die Zeitmarke soll immer bei :04 Sekunden sein
 
-      // Überprüft, ob die aktuelle Zeitmarke die Gesamtdauer nicht überschreitet.
-      if (currentTimestamp <= seconds) {
-        this.timestamps.push(currentTimestamp);
-      } else {
-        // Stoppt die Schleife, sobald die Gesamtdauer überschritten ist.
-        break;
-      }
+    let currentTimestamp = offset;
+
+    // Fügt Zeitmarken hinzu, bis die Gesamtdauer überschritten ist.
+    // Es gibt keine feste Obergrenze mehr für die Anzahl der Zeitmarken.
+    while (currentTimestamp <= totalSeconds) {
+      this.timestamps.push(currentTimestamp);
+      currentTimestamp += interval;
     }
   }
 
