@@ -29,17 +29,6 @@ export class DataEntryComponent {
   tableRows: { displayMinute: string; value: string }[] = [];
 
   submit() {
-    // if (this.seconds < 0 || this.seconds > 59) {
-    //   this.secondsTooltip = 'Seconds must be between 0 and 59.';
-    //   this.showSecondsTooltip = true;
-
-    //   // Tooltip nur kurz anzeigen, dann wieder deaktivieren
-    //   setTimeout(() => {
-    //     this.showSecondsTooltip = false;
-    //   }, 3000);
-
-    //   return;
-    // }
     this.submitted = true;
     this.createTableRows();
   }
@@ -49,6 +38,9 @@ export class DataEntryComponent {
 
     // Umrechnung der Gesamtlänge in Sekunden
     const totalSeconds = this.minutes * 60 + this.seconds;
+
+    // Anzahl der Zeitmarken ermitteln
+    
 
     for (let i = 1; i <= 10; i++) {
       // Berechne Zeitmarke für die aktuelle Zeile
