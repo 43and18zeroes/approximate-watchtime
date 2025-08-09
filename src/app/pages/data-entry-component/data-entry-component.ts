@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DataEntryService } from './services/data-entry-service';
+
 
 @Component({
   selector: 'app-data-entry-component',
@@ -20,6 +22,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrl: './data-entry-component.scss',
 })
 export class DataEntryComponent {
+  dataEntryService = inject(DataEntryService);
   minutes!: number;
   seconds!: number;
   submitted: boolean = false;
@@ -38,9 +41,9 @@ export class DataEntryComponent {
 
     // Umrechnung der Gesamtlänge in Sekunden
     const totalSeconds = this.minutes * 60 + this.seconds;
-
+    this.dataEntryService.generateTimestampRows(totalSeconds);
     // Anzahl der Zeitmarken ermitteln
-    
+
 
     for (let i = 1; i <= 10; i++) {
       // Berechne Zeitmarke für die aktuelle Zeile

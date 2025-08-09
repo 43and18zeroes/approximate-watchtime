@@ -5,12 +5,7 @@
   <div class="entry-inputs">
     <mat-form-field>
       <mat-label>Minutes</mat-label>
-      <input
-        matInput
-        type="number"
-        name="minutes"
-        [(ngModel)]="minutes"
-      />
+      <input matInput type="number" name="minutes" [(ngModel)]="minutes" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Seconds</mat-label>
@@ -51,4 +46,13 @@
   </tr>
   }
 </table>
+} @if (submitted) {
+<div class="mt-6">
+  <h3 class="text-xl font-semibold mb-2">Generierte Zeitmarken:</h3>
+  <ul class="divide-y divide-gray-200">
+    <li *ngFor="let timestamp of this.dataEntryService.timestamps" class="py-2">
+      {{ timestamp }} Sekunden (entspricht: {{ this.dataEntryService.formatTimestamp(timestamp) }})
+    </li>
+  </ul>
+</div>
 }
