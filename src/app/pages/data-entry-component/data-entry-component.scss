@@ -26,3 +26,13 @@ table {
   }
 }
 
+@media (width < 450px) {
+  td {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .percent-input-field {
+    width: 78px; /* Passe die Breite nach deinen Wünschen an */
+  }
+}
