@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DataEntryService } from './services/data-entry-service';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-data-entry-component',
@@ -16,6 +17,7 @@ import { DataEntryService } from './services/data-entry-service';
     MatInputModule,
     MatButtonModule,
     MatTooltipModule,
+    MatTableModule,
   ],
   templateUrl: './data-entry-component.html',
   styleUrl: './data-entry-component.scss',
@@ -27,10 +29,13 @@ export class DataEntryComponent {
   submitted: boolean = false;
   secondsTooltip: string = '';
   showSecondsTooltip: boolean = false;
+  displayedColumns = ['time', 'percent'];
+  rowValues: (number | null)[] = [];
 
   submit() {
     this.submitted = true;
     const totalSeconds = this.minutes * 60 + this.seconds;
     this.dataEntryService.generateTimestampRows(totalSeconds);
+    this.rowValues = Array(this.dataEntryService.timestamps.length).fill(null);
   }
 }

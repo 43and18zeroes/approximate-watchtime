@@ -31,18 +31,34 @@
 </form>
 
 @if (submitted) {
-<table mat-table>
-  <tr>
-    <th>Time in Minutes</th>
-    <th>Please enter the percentage as a number</th>
-  </tr>
-  @for (timestamp of this.dataEntryService.timestamps; track timestamp; let i = $index) {
-  <tr>
-    <td>{{ this.dataEntryService.formatTimestamp(timestamp) }}</td>
-    <td>
-      <input matInput name="rowInput{{ i }}" />
-    </td>
-  </tr>
-  }
-</table>
+  <table mat-table [dataSource]="dataEntryService.timestamps" class="mat-elevation-z2">
+
+    <!-- Spalte: Zeit -->
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef>Time in Minutes</th>
+      <td mat-cell *matCellDef="let ts">
+        {{ dataEntryService.formatTimestamp(ts) }}
+      </td>
+    </ng-container>
+
+    <!-- Spalte: Prozent-Eingabe -->
+    <ng-container matColumnDef="percent">
+      <th mat-header-cell *matHeaderCellDef>Please enter the percentage as a number</th>
+      <td mat-cell *matCellDef="let ts; let i = index">
+        <mat-form-field>
+          <mat-label>%</mat-label>
+          <input
+            matInput
+            type="number"
+            name="rowInput{{ i }}"
+            [(ngModel)]="rowValues[i]"
+          />
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <!-- Kopf- und Datenzeilen -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 }
