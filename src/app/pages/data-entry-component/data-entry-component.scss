@@ -2,18 +2,18 @@ h2 {
   margin-top: 0;
 }
 
-.entry-inputs {
-  mat-form-field {
-    margin-right: 12px;
-  }
+form {
+  margin-bottom: 16px;
 
-  mat-form-field:last-of-type {
-    margin-right: 0;
-  }
-}
+  .entry-inputs {
+    mat-form-field {
+      margin-right: 12px;
+    }
 
-.mat-mdc-table {
-  min-width: 1%;
+    mat-form-field:last-of-type {
+      margin-right: 0;
+    }
+  }
 }
 
 table {
@@ -24,6 +24,10 @@ table {
       display: none !important;
     }
   }
+}
+
+.mat-mdc-table {
+  min-width: 1%;
 }
 
 @media (width < 450px) {
