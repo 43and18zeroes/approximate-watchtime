@@ -15,3 +15,14 @@ h2 {
 .mat-mdc-table {
   min-width: 1%;
 }
+
+table {
+  mat-form-field {
+    margin: 8px 0;
+
+    ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+  }
+}
+
