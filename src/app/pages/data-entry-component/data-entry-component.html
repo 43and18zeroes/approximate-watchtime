@@ -31,35 +31,42 @@
 </form>
 
 @if (submitted) {
-  <table mat-table [dataSource]="dataEntryService.timestamps" class="mat-elevation-z2">
+<table
+  mat-table
+  [dataSource]="dataEntryService.timestamps"
+  class="mat-elevation-z2"
+>
+  <!-- Spalte: Zeit -->
+  <ng-container matColumnDef="time">
+    <th class="left-column" mat-header-cell *matHeaderCellDef>
+      Time in Minutes
+    </th>
+    <td class="left-column" mat-cell *matCellDef="let ts">
+      {{ dataEntryService.formatTimestamp(ts) }}
+    </td>
+  </ng-container>
 
-    <!-- Spalte: Zeit -->
-    <ng-container matColumnDef="time">
-      <th class="left-column" mat-header-cell *matHeaderCellDef>Time in Minutes</th>
-      <td class="left-column" mat-cell *matCellDef="let ts">
-        {{ dataEntryService.formatTimestamp(ts) }}
-      </td>
-    </ng-container>
+  <!-- Spalte: Prozent-Eingabe -->
+  <ng-container matColumnDef="percent">
+    <th mat-header-cell *matHeaderCellDef>Retention Percentages</th>
+    <td class="right-column" mat-cell *matCellDef="let ts; let i = index">
+      <mat-form-field class="percent-input-field">
+        <mat-label>%</mat-label>
+        <input
+          matInput
+          type="number"
+          name="rowInput{{ i }}"
+          [(ngModel)]="rowValues[i]"
+          required
+          min="0"
+          max="100"
+        />
+      </mat-form-field>
+    </td>
+  </ng-container>
 
-    <!-- Spalte: Prozent-Eingabe -->
-    <ng-container matColumnDef="percent">
-      <th mat-header-cell *matHeaderCellDef>Retention Percentages</th>
-      <td class="right-column" mat-cell *matCellDef="let ts; let i = index">
-        <mat-form-field class="percent-input-field">
-          <mat-label>%</mat-label>
-          <input
-            matInput
-            type="number"
-            name="rowInput{{ i }}"
-            [(ngModel)]="rowValues[i]"
-            required
-          />
-        </mat-form-field>
-      </td>
-    </ng-container>
-
-    <!-- Kopf- und Datenzeilen -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <!-- Kopf- und Datenzeilen -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
 }
