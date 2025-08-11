@@ -47,6 +47,35 @@ table {
       }
     }
   }
+
+  table {
+    td {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .percent-input-field {
+      width: 78px; /* Passe die Breite nach deinen Wünschen an */
+    }
+
+    .left-column {
+      width: 125px;
+    }
+
+    .right-column {
+      min-width: 1px;
+      width: 1px;
+    }
+  }
+
+  td {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .percent-input-field {
+    width: 78px; /* Passe die Breite nach deinen Wünschen an */
+  }
 }
 
 @media (width < 550px) {
@@ -56,16 +85,5 @@ table {
         margin-right: 0;
       }
     }
-  }
-}
-
-@media (width < 580px) {
-  td {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  .percent-input-field {
-    width: 78px; /* Passe die Breite nach deinen Wünschen an */
   }
 }
