@@ -1,5 +1,16 @@
-h2 {
-  margin-top: 0;
+@keyframes fadeInSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin-top: 4px;
 }
 
 form {
@@ -17,6 +28,8 @@ form {
 }
 
 table {
+  animation: fadeInSlideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
   mat-form-field {
     margin: 8px 0;
 
@@ -28,10 +41,6 @@ table {
   .left-column {
     width: 208px;
   }
-
-  // .right-column {
-  //   width: 1%;
-  // }
 }
 
 .mat-mdc-table {
@@ -55,7 +64,7 @@ table {
     }
 
     .percent-input-field {
-      width: 78px; /* Passe die Breite nach deinen Wünschen an */
+      width: 78px;
     }
 
     .left-column {
@@ -74,7 +83,7 @@ table {
   }
 
   .percent-input-field {
-    width: 78px; /* Passe die Breite nach deinen Wünschen an */
+    width: 78px;
   }
 }
 
