@@ -34,14 +34,32 @@ table {
   // }
 }
 
-
-
 .mat-mdc-table {
   min-width: 1%;
   padding-bottom: 40px;
 }
 
-@media (width < 450px) {
+@media (width < 580px) {
+  form {
+    .entry-inputs {
+      mat-form-field {
+        margin-right: 44px;
+      }
+    }
+  }
+}
+
+@media (width < 550px) {
+  form {
+    .entry-inputs {
+      mat-form-field {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+@media (width < 580px) {
   td {
     padding-left: 8px;
     padding-right: 8px;
