@@ -24,10 +24,21 @@ table {
       display: none !important;
     }
   }
+
+  .left-column {
+    width: 208px;
+  }
+
+  // .right-column {
+  //   width: 1%;
+  // }
 }
+
+
 
 .mat-mdc-table {
   min-width: 1%;
+  padding-bottom: 40px;
 }
 
 @media (width < 450px) {
