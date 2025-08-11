@@ -38,4 +38,21 @@ export class DataEntryComponent {
     this.dataEntryService.generateTimestampRows(totalSeconds);
     this.rowValues = Array(this.dataEntryService.timestamps.length).fill(null);
   }
+
+
+  ngOnInit() {
+    this.fillAndSubmitForm();
+    this.fillPercentages();
+  }
+
+  fillAndSubmitForm() {
+    // Setzt gültige Werte: Minuten (max 10) und Sekunden (0-59)
+    this.minutes = 10;
+    this.seconds = 30;
+    this.submit();
+  }
+
+  fillPercentages() {
+    
+  }
 }
