@@ -28,14 +28,14 @@ import { Subscription } from 'rxjs';
 })
 export class App {
   protected readonly title = signal('Calculate Your Retention Time');
+  deviceService = inject(DeviceService);
   themeService = inject(ThemeService);
   collapsed = signal(true);
   isDesktop = signal(true);
   private breakpointSub?: Subscription;
 
   constructor(
-    private breakpointObserver: BreakpointObserver,
-    private deviceService: DeviceService
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
