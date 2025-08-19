@@ -39,8 +39,7 @@ export class DataEntryComponent {
     // this.rowValues = Array(this.dataEntryService.timestamps.length).fill(null);
   }
 
-
-  ngOnInit() {
+  ngAfterViewInit() {
     this.fillAndSubmitForm();
     this.fillPercentages();
   }
@@ -53,6 +52,13 @@ export class DataEntryComponent {
   }
 
   fillPercentages() {
-    
+    debugger;
+    const percentageInputs = document.getElementsByClassName('script__class');
+
+    for (let i = 0; i < percentageInputs.length; i++) {
+      const input = percentageInputs[i] as HTMLInputElement;
+      console.log('input', input);
+      input.value = '100';
+    }
   }
 }
