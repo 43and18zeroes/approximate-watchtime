@@ -31,24 +31,34 @@
 </form>
 
 @if (submitted) {
-  <table>
-    <thead>
-      <tr>
-        <th>Time</th>
-        <th>Retention</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (row of dataEntryService.timestamps; track row) {
-        <tr>
-          <td>{{ row }}</td>
-        </tr>
-      }
-    </tbody>
-  </table>
-}
-
-@if (submitted) {
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Retention</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of dataEntryService.timestamps; track row) {
+    <tr>
+      <td>{{ dataEntryService.formatTimestamp(row) }}</td>
+      <td>
+        <mat-form-field class="percent-input-field">
+          <mat-label>%</mat-label>
+          <input
+            matInput
+            type="number"
+            required
+            min="0"
+            max="100"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+} @if (submitted) {
 <table
   mat-table
   [dataSource]="dataEntryService.timestamps"
