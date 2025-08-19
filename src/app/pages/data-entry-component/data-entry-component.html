@@ -31,6 +31,24 @@
 </form>
 
 @if (submitted) {
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Retention</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of dataEntryService.timestamps; track row) {
+        <tr>
+          <td>{{ row }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}
+
+@if (submitted) {
 <table
   mat-table
   [dataSource]="dataEntryService.timestamps"

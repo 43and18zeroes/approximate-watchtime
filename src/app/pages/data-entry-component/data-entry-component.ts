@@ -36,7 +36,7 @@ export class DataEntryComponent {
     this.submitted = true;
     const totalSeconds = this.minutes * 60 + this.seconds;
     this.dataEntryService.generateTimestampRows(totalSeconds);
-    this.rowValues = Array(this.dataEntryService.timestamps.length).fill(null);
+    // this.rowValues = Array(this.dataEntryService.timestamps.length).fill(null);
   }
 
 
