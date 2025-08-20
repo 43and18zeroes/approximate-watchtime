@@ -50,18 +50,23 @@ export class DataEntryComponent {
 
   fillAndSubmitForm() {
     // Setzt gültige Werte: Minuten (max 10) und Sekunden (0-59)
-    this.minutes = 10;
+    this.minutes = 25;
     this.seconds = 30;
     this.submit();
   }
 
   fillPercentages() {
+    let inputValue = 100;
     const percentageInputs = document.getElementsByClassName('script__class');
 
     for (let i = 0; i < percentageInputs.length; i++) {
       const input = percentageInputs[i] as HTMLInputElement;
-      console.log('input', input);
-      input.value = '100';
+      input.value = inputValue.toString();
+      inputValue -= 10;
+
+      if(inputValue < 0) {
+        inputValue += 10;
+      }
     }
   }
 }
