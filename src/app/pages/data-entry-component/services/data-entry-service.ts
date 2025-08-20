@@ -21,6 +21,7 @@ generateTimestampRows(totalSeconds: number) {
 
   // letzten Wert durch totalSeconds ersetzen
   if (this.timestamps.length > 0) {
+    this.timestamps[0] = 0;
     this.timestamps[this.timestamps.length - 1] = totalSeconds;
   }
 }
