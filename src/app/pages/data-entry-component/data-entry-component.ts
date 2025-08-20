@@ -40,8 +40,12 @@ export class DataEntryComponent {
   }
 
   ngAfterViewInit() {
-    this.fillAndSubmitForm();
-    this.fillPercentages();
+    setTimeout(() => {
+      this.fillAndSubmitForm();
+    }, 0);
+    setTimeout(() => {
+      this.fillPercentages();
+    }, 0);
   }
 
   fillAndSubmitForm() {
@@ -52,7 +56,6 @@ export class DataEntryComponent {
   }
 
   fillPercentages() {
-    debugger;
     const percentageInputs = document.getElementsByClassName('script__class');
 
     for (let i = 0; i < percentageInputs.length; i++) {
