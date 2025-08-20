@@ -58,14 +58,16 @@
     </tr>
     }
   </tbody>
+  <button (click)="calcTime()">Calc</button>
 </table>
-} @if (submitted) {
+}
+
+<!-- @if (submitted) {
 <table
   mat-table
   [dataSource]="dataEntryService.timestamps"
   class="mat-elevation-z2"
 >
-  <!-- Spalte: Zeit -->
   <ng-container matColumnDef="time">
     <th class="left-column" mat-header-cell *matHeaderCellDef>
       Time in Minutes
@@ -75,7 +77,6 @@
     </td>
   </ng-container>
 
-  <!-- Spalte: Prozent-Eingabe -->
   <ng-container matColumnDef="percent">
     <th mat-header-cell *matHeaderCellDef>Retention Percentages</th>
     <td class="right-column" mat-cell *matCellDef="let ts; let i = index">
@@ -94,8 +95,8 @@
     </td>
   </ng-container>
 
-  <!-- Kopf- und Datenzeilen -->
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-}
+</table> 
+} -->
