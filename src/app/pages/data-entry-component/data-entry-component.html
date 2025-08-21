@@ -1,7 +1,7 @@
 <h1>Calculate Your Retention Time</h1>
 <h2>Please enter the duration of your content</h2>
 
-<form (ngSubmit)="submit()" #entryForm="ngForm">
+<form (ngSubmit)="submitLength()" #lengthForm="ngForm">
   <div class="entry-inputs">
     <mat-form-field>
       <mat-label>Minutes</mat-label>
@@ -25,41 +25,45 @@
       }
     </mat-form-field>
   </div>
-  <button matButton="tonal" type="submit" [disabled]="!entryForm.valid">
+  <button matButton="tonal" type="submit" [disabled]="!lengthForm.valid">
     Submit
   </button>
 </form>
 
 @if (submitted) {
-<table>
-  <thead>
-    <tr>
-      <th>Time</th>
-      <th>Retention</th>
-    </tr>
-  </thead>
-  <tbody>
-    @for (row of dataEntryService.timestamps; track row) {
-    <tr>
-      <td>{{ dataEntryService.formatTimestamp(row) }}</td>
-      <td>
-        <mat-form-field class="percent-input-field">
-          <mat-label>%</mat-label>
-          <input
-            class="script__class"
-            matInput
-            type="number"
-            required
-            min="0"
-            max="100"
-          />
-        </mat-form-field>
-      </td>
-    </tr>
-    }
-  </tbody>
-  <button (click)="calcTime()">Calc</button>
-</table>
+<form (ngSubmit)="submitRetentions()" #retentionForm="ngForm">
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Retention</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of dataEntryService.timestamps; track row) {
+      <tr>
+        <td>{{ dataEntryService.formatTimestamp(row) }}</td>
+        <td>
+          <mat-form-field class="percent-input-field">
+            <mat-label>%</mat-label>
+            <input
+              class="script__class"
+              matInput
+              type="number"
+              required
+              min="0"
+              max="100"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+      }
+    </tbody>
+    <button matButton="tonal" type="submit" [disabled]="!retentionForm.valid">
+      Submit
+    </button>
+  </table>
+</form>
 }
 
 <!-- @if (submitted) {

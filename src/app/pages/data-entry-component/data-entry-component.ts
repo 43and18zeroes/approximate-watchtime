@@ -32,7 +32,7 @@ export class DataEntryComponent {
   displayedColumns = ['time', 'percent'];
   rowValues: (number | null)[] = [];
 
-  submit() {
+  submitLength() {
     this.submitted = true;
     const totalSeconds = this.minutes * 60 + this.seconds;
     this.dataEntryService.generateTimestampRows(totalSeconds);
@@ -48,7 +48,7 @@ export class DataEntryComponent {
     }, 0);
   }
 
-  calcTime() {
+  submitRetentions() {
     const avg = this.calculateApproxAverageWatchTime();
     console.log(
       'Durchschnittliche Wiedergabezeit:',
@@ -61,7 +61,7 @@ export class DataEntryComponent {
     // Setzt gültige Werte: Minuten (max 10) und Sekunden (0-59)
     this.minutes = 22;
     this.seconds = 7;
-    this.submit();
+    this.submitLength();
   }
 
   fillPercentages() {
