@@ -1,8 +1,10 @@
 <div class="sheet">
   <h3>Durchschnittliche Wiedergabezeit</h3>
-  <p><strong>{{ formatted }}</strong> ({{ seconds }} s)</p>
+  <p>{{ formatted }} Minutes ({{ seconds }} Seconds)</p>
 
   <div class="actions">
-    <button mat-button (click)="close()">OK</button>
+    <button matButton="tonal" (click)="close()">
+      Close
+    </button>
   </div>
 </div>
