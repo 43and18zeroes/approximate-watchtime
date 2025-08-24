@@ -1,10 +1,10 @@
 <div class="sheet">
-  <h3>Durchschnittliche Wiedergabezeit</h3>
-  <p>{{ formatted }} Minutes ({{ seconds }} Seconds)</p>
-
-  <div class="actions">
-    <button matButton="tonal" (click)="close()">
-      Close
+  <div class="sheet-header">
+    <h3>Approximated Watch Time</h3>
+    <button mat-icon-button (click)="close()" aria-label="Close">
+      <mat-icon>close</mat-icon>
     </button>
   </div>
+  <p>{{ formatted }} Minutes ({{ seconds }} Seconds)</p>
+  <p>Disclaimer</p>
 </div>
