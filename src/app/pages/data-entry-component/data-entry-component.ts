@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DataEntryService } from './services/data-entry-service';
 import { MatTableModule } from '@angular/material/table';
+import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { DataAnalysisComponent } from '../../components/data-analysis-component/data-analysis-component';
 
 @Component({
   selector: 'app-data-entry-component',
@@ -18,11 +20,13 @@ import { MatTableModule } from '@angular/material/table';
     MatButtonModule,
     MatTooltipModule,
     MatTableModule,
+    MatBottomSheetModule,
   ],
   templateUrl: './data-entry-component.html',
   styleUrl: './data-entry-component.scss',
 })
 export class DataEntryComponent {
+  private bottomSheet = inject(MatBottomSheet);
   dataEntryService = inject(DataEntryService);
   minutes!: number;
   seconds!: number;
@@ -53,6 +57,13 @@ export class DataEntryComponent {
       avg.formatted,
       `(${avg.seconds} s)`
     );
+    this.bottomSheet.open(DataAnalysisComponent, {
+      data: { formatted: avg.formatted, seconds: avg.seconds },
+      hasBackdrop: false,            // ↔ App bleibt interaktiv
+      disableClose: false,
+      panelClass: 'analysis-bottom-sheet', // für Größe/Optik
+      ariaLabel: 'Durchschnittliche Wiedergabezeit',
+    });
   }
 
   fillAndSubmitForm() {

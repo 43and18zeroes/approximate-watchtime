@@ -1,1 +1,8 @@
-<p>data-analysis-component works!</p>
+<div class="sheet">
+  <h3>Durchschnittliche Wiedergabezeit</h3>
+  <p><strong>{{ formatted }}</strong> ({{ seconds }} s)</p>
+
+  <div class="actions">
+    <button mat-button (click)="close()">OK</button>
+  </div>
+</div>
