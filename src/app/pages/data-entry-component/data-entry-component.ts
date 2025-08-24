@@ -59,11 +59,19 @@ export class DataEntryComponent {
     );
     this.bottomSheet.open(DataAnalysisComponent, {
       data: { formatted: avg.formatted, seconds: avg.seconds },
-      hasBackdrop: false,            // ↔ App bleibt interaktiv
-      disableClose: false,
-      panelClass: 'analysis-bottom-sheet', // für Größe/Optik
-      ariaLabel: 'Durchschnittliche Wiedergabezeit',
+
+      // Interaktionen außerhalb blockieren:
+      hasBackdrop: true,
+      disableClose: true,        // Klicks aufs Backdrop schließen NICHT
+
+      // Fokus/Scroll-Jumps vermeiden:
+      autoFocus: false,
       restoreFocus: false as any,
+
+      // Look & Größe:
+      panelClass: 'analysis-bottom-sheet',
+      backdropClass: 'analysis-backdrop',
+      ariaLabel: 'Durchschnittliche Wiedergabezeit',
     });
   }
 
