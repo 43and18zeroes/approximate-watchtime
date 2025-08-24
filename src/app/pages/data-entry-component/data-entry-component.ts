@@ -62,7 +62,7 @@ export class DataEntryComponent {
 
       // Interaktionen außerhalb blockieren:
       hasBackdrop: true,
-      disableClose: true,        // Klicks aufs Backdrop schließen NICHT
+      disableClose: false,        // Klicks aufs Backdrop schließen NICHT
 
       // Fokus/Scroll-Jumps vermeiden:
       autoFocus: false,
