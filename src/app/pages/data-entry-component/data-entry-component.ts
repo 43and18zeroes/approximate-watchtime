@@ -63,6 +63,7 @@ export class DataEntryComponent {
       disableClose: false,
       panelClass: 'analysis-bottom-sheet', // für Größe/Optik
       ariaLabel: 'Durchschnittliche Wiedergabezeit',
+      restoreFocus: false as any,
     });
   }
 
