@@ -34,10 +34,16 @@ table {
       display: none !important;
     }
   }
+}
 
-  .left-column {
-    width: 208px;
-  }
+th {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.left-column {
+  width: 217px;
 }
 
 .mat-mdc-table {
@@ -55,17 +61,17 @@ table {
   }
 
   table {
-    td {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
+    // td {
+      // padding-left: 8px;
+      // padding-right: 8px;
+    // }
 
     .percent-input-field {
-      width: 78px;
+      width: 90px;
     }
 
     .left-column {
-      width: 125px;
+      width: 114px;
     }
 
     .right-column {
@@ -74,10 +80,10 @@ table {
     }
   }
 
-  td {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
+  // td {
+  //   padding-left: 8px;
+  //   padding-right: 8px;
+  // }
 
   .percent-input-field {
     width: 78px;

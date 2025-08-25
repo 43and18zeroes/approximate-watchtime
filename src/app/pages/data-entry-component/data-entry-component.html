@@ -42,7 +42,7 @@
     <tbody>
       @for (row of dataEntryService.timestamps; track row) {
       <tr>
-        <td>{{ dataEntryService.formatTimestamp(row) }}</td>
+        <td class="left-column">{{ dataEntryService.formatTimestamp(row) }}</td>
         <td>
           <mat-form-field class="percent-input-field">
             <mat-label>%</mat-label>
