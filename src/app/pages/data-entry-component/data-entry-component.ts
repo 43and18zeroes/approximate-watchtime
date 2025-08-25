@@ -77,8 +77,8 @@ export class DataEntryComponent {
 
   fillAndSubmitForm() {
     // Setzt gültige Werte: Minuten (max 10) und Sekunden (0-59)
-    this.minutes = 22;
-    this.seconds = 7;
+    this.minutes = 19;
+    this.seconds = 50;
     this.submitLength();
   }
 
