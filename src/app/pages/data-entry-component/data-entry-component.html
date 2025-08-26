@@ -28,6 +28,7 @@
   <button matButton="tonal" type="submit" [disabled]="!lengthForm.valid">
     Submit
   </button>
+  <button mat-stroked-button type="button" (click)="resetLength()">Reset</button>
 </form>
 
 @if (submitted) {
@@ -63,5 +64,6 @@
   <button matButton="tonal" type="submit" [disabled]="!retentionForm.valid">
     Submit
   </button>
+  <button mat-stroked-button type="button" (click)="resetRetentions()">Reset</button>
 </form>
 }

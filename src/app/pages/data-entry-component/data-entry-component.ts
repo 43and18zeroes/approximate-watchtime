@@ -7,7 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DataEntryService } from './services/data-entry-service';
 import { MatTableModule } from '@angular/material/table';
-import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import {
+  MatBottomSheet,
+  MatBottomSheetModule,
+} from '@angular/material/bottom-sheet';
 import { DataAnalysisComponent } from '../../components/data-analysis-component/data-analysis-component';
 
 @Component({
@@ -62,7 +65,7 @@ export class DataEntryComponent {
 
       // Interaktionen außerhalb blockieren:
       hasBackdrop: true,
-      disableClose: false,        // Klicks aufs Backdrop schließen NICHT
+      disableClose: false, // Klicks aufs Backdrop schließen NICHT
 
       // Fokus/Scroll-Jumps vermeiden:
       autoFocus: false,
@@ -94,6 +97,23 @@ export class DataEntryComponent {
       if (inputValue < 0) {
         inputValue += 5;
       }
+    }
+  }
+
+  resetLength() {
+    // Minuten/Sekunden zurücksetzen
+    this.minutes = undefined!;
+    this.seconds = undefined!;
+    this.submitted = false;
+    // Auch Service-Daten zurücksetzen
+    this.dataEntryService.timestamps = [];
+  }
+
+  resetRetentions() {
+    // alle Input-Felder mit Klasse "script__class" leeren
+    const percentageInputs = document.getElementsByClassName('script__class');
+    for (let i = 0; i < percentageInputs.length; i++) {
+      (percentageInputs[i] as HTMLInputElement).value = '';
     }
   }
 }
