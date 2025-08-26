@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -100,14 +100,12 @@ export class DataEntryComponent {
     }
   }
 
-  resetLength() {
-    // Minuten/Sekunden zurücksetzen
-    this.minutes = undefined!;
-    this.seconds = undefined!;
-    this.submitted = false;
-    // Auch Service-Daten zurücksetzen
-    this.dataEntryService.timestamps = [];
-  }
+resetLength(lengthForm: NgForm) {
+  // Werte + Status (touched/pristine/valid/etc.) zurücksetzen
+  lengthForm.resetForm();          // => invalid/touched sind zurückgesetzt
+  this.submitted = false;          // falls du die Retentions-Section ausblenden willst
+  this.dataEntryService.timestamps = []; // optional: wenn du die Tabelle leeren willst
+}
 
   resetRetentions() {
     // alle Input-Felder mit Klasse "script__class" leeren

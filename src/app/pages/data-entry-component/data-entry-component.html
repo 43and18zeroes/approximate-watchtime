@@ -28,7 +28,10 @@
   <button matButton="tonal" type="submit" [disabled]="!lengthForm.valid" class="submit-btn">
     Submit
   </button>
-  <button matButton="outlined" type="button" (click)="resetLength()">Reset</button>
+  <button matButton="outlined" type="button"
+          (click)="resetLength(lengthForm)">
+    Reset
+  </button>
 </form>
 
 @if (submitted) {
