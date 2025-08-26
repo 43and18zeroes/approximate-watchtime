@@ -25,10 +25,10 @@
       }
     </mat-form-field>
   </div>
-  <button matButton="tonal" type="submit" [disabled]="!lengthForm.valid">
+  <button matButton="tonal" type="submit" [disabled]="!lengthForm.valid" class="submit-btn">
     Submit
   </button>
-  <button mat-stroked-button type="button" (click)="resetLength()">Reset</button>
+  <button matButton="outlined" type="button" (click)="resetLength()">Reset</button>
 </form>
 
 @if (submitted) {
@@ -61,9 +61,9 @@
       }
     </tbody>
   </table>
-  <button matButton="tonal" type="submit" [disabled]="!retentionForm.valid">
+  <button matButton="tonal" type="submit" [disabled]="!retentionForm.valid" class="submit-btn">
     Submit
   </button>
-  <button mat-stroked-button type="button" (click)="resetRetentions()">Reset</button>
+  <button matButton="outlined" type="button" (click)="resetRetentions()">Reset</button>
 </form>
 }
