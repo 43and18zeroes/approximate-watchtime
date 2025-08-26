@@ -7,22 +7,20 @@ export class DataEntryService {
   public timestamps: number[] = [];
 
 generateTimestampRows(totalSeconds: number) {
-  this.timestamps = [];
-
   const interval = 120; // 120 Sekunden
   const offset = 4;     // Start bei :04 Sekunden
 
-  let currentTimestamp = offset;
+  this.timestamps = [0];                // immer mit 0:00 starten
+  const cutoff = Math.max(0, totalSeconds - 60); // 1-Minuten-Puffer vor Ende
 
-  while (currentTimestamp <= totalSeconds) {
-    this.timestamps.push(currentTimestamp);
-    currentTimestamp += interval;
+  // 02:04, 04:04, 06:04, ... nur bis max. totalSeconds - 60
+  for (let t = offset; t <= cutoff; t += interval) {
+    this.timestamps.push(t);
   }
 
-  // letzten Wert durch totalSeconds ersetzen
-  if (this.timestamps.length > 0) {
-    this.timestamps[0] = 0;
-    this.timestamps[this.timestamps.length - 1] = totalSeconds;
+  // zum Schluss die exakte Gesamtlänge anfügen (z. B. 19:50)
+  if (this.timestamps[this.timestamps.length - 1] !== totalSeconds) {
+    this.timestamps.push(totalSeconds);
   }
 }
 
