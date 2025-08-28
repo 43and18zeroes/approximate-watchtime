@@ -44,7 +44,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (row of dataEntryService.timestamps; track row) {
+      @for (row of dataEntryService.timestamps; track row; let i = $index) {
       <tr>
         <td class="left-column">{{ dataEntryService.formatTimestamp(row) }}</td>
         <td>
@@ -54,19 +54,31 @@
               class="script__class"
               matInput
               type="number"
+              name="retention{{ i }}"
+              [(ngModel)]="retentions[i]"
+              #rCtrl="ngModel"
               required
               min="0"
               max="100"
             />
+            @if (rCtrl.invalid && (rCtrl.touched || retentionForm.submitted)) {
+              <mat-error>Bitte einen Wert zwischen 0 und 100 eingeben.</mat-error>
+            }
           </mat-form-field>
         </td>
       </tr>
       }
     </tbody>
   </table>
-  <button matButton="tonal" type="submit" [disabled]="!retentionForm.valid" class="submit-btn">
+
+  <button matButton="tonal" type="submit"
+          [disabled]="!retentionForm.valid"
+          class="submit-btn">
     Submit
   </button>
-  <button matButton="outlined" type="button" (click)="resetRetentions()">Reset</button>
+  <button matButton="outlined" type="button"
+          (click)="resetRetentions(retentionForm)">
+    Reset
+  </button>
 </form>
 }

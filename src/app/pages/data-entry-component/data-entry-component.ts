@@ -37,11 +37,17 @@ export class DataEntryComponent {
   secondsTooltip: string = '';
   showSecondsTooltip: boolean = false;
   displayedColumns = ['time', 'percent'];
+  retentions: (number | null)[] = [];
 
   submitLength() {
     this.submitted = true;
     const totalSeconds = this.minutes * 60 + this.seconds;
     this.dataEntryService.generateTimestampRows(totalSeconds);
+
+    // Array für Eingaben aufsetzen
+    this.retentions = new Array(this.dataEntryService.timestamps.length).fill(
+      null
+    );
   }
 
   ngAfterViewInit() {
@@ -86,32 +92,27 @@ export class DataEntryComponent {
   }
 
   fillPercentages() {
-    let inputValue = 100;
-    const percentageInputs = document.getElementsByClassName('script__class');
+    if (!this.retentions?.length) return;
 
-    for (let i = 0; i < percentageInputs.length; i++) {
-      const input = percentageInputs[i] as HTMLInputElement;
-      input.value = inputValue.toString();
-      inputValue -= 5;
-
-      if (inputValue < 0) {
-        inputValue += 5;
-      }
+    let val = 100;
+    for (let i = 0; i < this.retentions.length; i++) {
+      // clamp 0–100 und als Zahl setzen
+      const v = Math.max(0, Math.min(100, val));
+      this.retentions[i] = v;
+      val -= 5;
+      if (val < 0) val += 5;
     }
   }
 
-resetLength(lengthForm: NgForm) {
-  // Werte + Status (touched/pristine/valid/etc.) zurücksetzen
-  lengthForm.resetForm();          // => invalid/touched sind zurückgesetzt
-  this.submitted = false;          // falls du die Retentions-Section ausblenden willst
-  this.dataEntryService.timestamps = []; // optional: wenn du die Tabelle leeren willst
-}
+  resetLength(lengthForm: NgForm) {
+    // Werte + Status (touched/pristine/valid/etc.) zurücksetzen
+    lengthForm.resetForm(); // => invalid/touched sind zurückgesetzt
+    this.submitted = false; // falls du die Retentions-Section ausblenden willst
+    this.dataEntryService.timestamps = []; // optional: wenn du die Tabelle leeren willst
+  }
 
-  resetRetentions() {
-    // alle Input-Felder mit Klasse "script__class" leeren
-    const percentageInputs = document.getElementsByClassName('script__class');
-    for (let i = 0; i < percentageInputs.length; i++) {
-      (percentageInputs[i] as HTMLInputElement).value = '';
-    }
+  resetRetentions(retentionForm: NgForm) {
+    retentionForm.resetForm();
+    this.retentions = this.retentions.map(() => null);
   }
 }
