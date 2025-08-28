@@ -8,13 +8,13 @@ export class DataEntryService {
 
 generateTimestampRows(totalSeconds: number) {
   const interval = 120; // 120 Sekunden
-  const offset = 4;     // Start bei :04 Sekunden
+  const offset = 4;     // Marken liegen bei ...:04
 
-  this.timestamps = [0];                // immer mit 0:00 starten
-  const cutoff = Math.max(0, totalSeconds - 60); // 1-Minuten-Puffer vor Ende
+  this.timestamps = [0];                          // immer 0:00 zuerst
+  const cutoff = Math.max(0, totalSeconds - 60);  // 1-Minuten-Puffer vor Ende
 
-  // 02:04, 04:04, 06:04, ... nur bis max. totalSeconds - 60
-  for (let t = offset; t <= cutoff; t += interval) {
+  // ab 2:04 starten (=> offset + interval = 124s), dann alle 120s bis cutoff
+  for (let t = offset + interval; t <= cutoff; t += interval) {
     this.timestamps.push(t);
   }
 
