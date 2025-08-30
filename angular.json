@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "crud": {
+    "approximate-watchtime": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "crud:build:production"
+              "buildTarget": "approximate-watchtime:build:production"
             },
             "development": {
-              "buildTarget": "crud:build:development"
+              "buildTarget": "approximate-watchtime:build:development"
             }
           },
           "defaultConfiguration": "development"
