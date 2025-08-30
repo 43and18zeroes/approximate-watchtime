@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,6 +29,8 @@ import { DataAnalysisComponent } from '../../components/data-analysis-component/
   styleUrl: './data-entry-component.scss',
 })
 export class DataEntryComponent {
+  @ViewChild('retentionForm') retentionForm?: NgForm;
+  submitLengthCalledOnce = false;
   private bottomSheet = inject(MatBottomSheet);
   dataEntryService = inject(DataEntryService);
   minutes!: number;
@@ -43,11 +45,13 @@ export class DataEntryComponent {
     this.submitted = true;
     const totalSeconds = this.minutes * 60 + this.seconds;
     this.dataEntryService.generateTimestampRows(totalSeconds);
-
-    // Array für Eingaben aufsetzen
     this.retentions = new Array(this.dataEntryService.timestamps.length).fill(
       null
     );
+    if (this.submitLengthCalledOnce) {
+      setTimeout(() => this.retentionForm?.resetForm(), 0);
+    }
+    this.submitLengthCalledOnce = true;
   }
 
   ngAfterViewInit() {
