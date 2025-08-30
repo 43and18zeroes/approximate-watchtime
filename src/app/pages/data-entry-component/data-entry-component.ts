@@ -54,14 +54,14 @@ export class DataEntryComponent {
     this.submitLengthCalledOnce = true;
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.fillAndSubmitForm();
-    }, 0);
-    setTimeout(() => {
-      this.fillPercentages();
-    }, 0);
-  }
+  // ngAfterViewInit() {
+  //   setTimeout(() => {
+  //     this.fillAndSubmitForm();
+  //   }, 0);
+  //   setTimeout(() => {
+  //     this.fillPercentages();
+  //   }, 0);
+  // }
 
   submitRetentions() {
     const avg = this.dataEntryService.calculateApproxAverageWatchTime();
