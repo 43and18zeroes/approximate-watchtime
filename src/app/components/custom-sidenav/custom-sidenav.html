@@ -1,17 +1,23 @@
 <mat-nav-list>
-  <a
-    mat-list-item
-    *ngFor="let item of menuItems()"
-    [routerLink]="item.route"
-    routerLinkActive="selected-menu-item"
-    #rla="routerLinkActive"
-    [activated]="rla.isActive"
-  >
-    <mat-icon
-      [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
-      matListItemIcon [style.marginLeft]="iconMargin()"
-      >{{ item.icon }}</mat-icon
+  @for (item of menuItems(); track item.route) {
+    <a
+      mat-list-item
+      [routerLink]="item.route"
+      routerLinkActive="selected-menu-item"
+      #rla="routerLinkActive"
+      [activated]="rla.isActive"
     >
-    <span matListItemTitle *ngIf="!sideNavCollapsed()">{{ item.label }}</span>
-  </a>
+      <mat-icon
+        [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
+        matListItemIcon
+        [style.marginLeft]="iconMargin()"
+      >
+        {{ item.icon }}
+      </mat-icon>
+
+      @if (!sideNavCollapsed()) {
+        <span matListItemTitle>{{ item.label }}</span>
+      }
+    </a>
+  }
 </mat-nav-list>
